@@ -1,0 +1,12 @@
+apply plugin: "kotlin"
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //Rx
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlin"
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Bitcoin tracker</string>
+
+    <string name="bitcoin">Bitcoin</string>
+    <string name="ethereum">Ethereum</string>
+    <string name="litecoin">Litecoin</string>
+</resources>
