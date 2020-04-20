@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/selectedCurrencyText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/selected_currency"
+        android:theme="@style/MediumBlackTextView"
+        app:layout_constraintBottom_toBottomOf="@id/flagImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/flagImageView" />
+
+    <ImageView
+        android:id="@+id/flagImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/countryNameTextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/selectedCurrencyText"
+        app:layout_constraintTop_toTopOf="@id/countryNameTextView"
+        tools:src="@drawable/flag_ac" />
+
+    <TextView
+        android:id="@+id/countryNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:theme="@style/SmallBlackTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/flagImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="British Pound" />
+
+    <TextView
+        android:id="@+id/lastTimeUpdatedText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/last_time_updated"
+        android:theme="@style/MediumBlackTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flagImageView" />
+
+    <TextView
+        android:id="@+id/lastCurrencyUpdateDateTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:theme="@style/SmallBlackTextView"
+        app:layout_constraintBottom_toBottomOf="@id/lastTimeUpdatedText"
+        app:layout_constraintEnd_toStartOf="@id/refreshImageView"
+        app:layout_constraintStart_toEndOf="@id/lastTimeUpdatedText"
+        app:layout_constraintTop_toTopOf="@id/lastTimeUpdatedText"
+        tools:text="10.10.2020" />
+
+    <ImageView
+        android:id="@+id/refreshImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_refresh"
+        app:layout_constraintBottom_toBottomOf="@id/lastCurrencyUpdateDateTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/lastCurrencyUpdateDateTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

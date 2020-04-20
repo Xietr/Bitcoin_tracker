@@ -6,6 +6,9 @@ dependencies {
 
     //Rx
     implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlin"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
 }
 
 sourceCompatibility = "7"

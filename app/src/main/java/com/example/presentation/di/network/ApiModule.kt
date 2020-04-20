@@ -15,5 +15,4 @@ class ApiModule {
     fun provideCoinApi(retrofit: Retrofit): CoinApi {
         return retrofit.create(CoinApi::class.java)
     }
-
 }

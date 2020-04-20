@@ -8,9 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="MediumBlackText">
+    <style name="MediumBlackTextView">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="SmallBlackTextView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ErrorTextView">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/red</item>
+    </style>
 </resources>
