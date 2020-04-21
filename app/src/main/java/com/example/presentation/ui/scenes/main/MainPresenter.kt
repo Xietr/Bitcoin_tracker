@@ -13,7 +13,10 @@ import moxy.MvpPresenter
 import org.json.JSONObject
 import retrofit2.Response
 import java.text.DecimalFormat
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 
 @InjectViewState
@@ -43,7 +46,7 @@ class MainPresenter @Inject constructor(private val exchangeRateGateway: Exchang
             } else {
                 viewState.setExchangeRates(it.keys.toCollection(ArrayList()))
             }
-            viewState.inflateAndFillViewStub(name, flagDrawableResID)
+            viewState.inflateAndFillViewStub(name, flagDrawableResID, getCurrentDate())
         }
     }
 
@@ -55,7 +58,7 @@ class MainPresenter @Inject constructor(private val exchangeRateGateway: Exchang
                 } else {
                     viewState.setExchangeRates(it.keys.toCollection(ArrayList()))
                 }
-                viewState.updateDate()
+                viewState.updateDate(getCurrentDate())
             }
         }
     }
@@ -93,6 +96,13 @@ class MainPresenter @Inject constructor(private val exchangeRateGateway: Exchang
                 it.printStackTrace()
                 viewState.showError("Connection Error")
             }).addTo(compositeDisposable)
+    }
+
+    private fun getCurrentDate(): String {
+        val dateFormat = SimpleDateFormat(
+            "yyyy/MM/dd HH:mm:ss", Locale.getDefault()
+        )
+        return dateFormat.format(Date())
     }
 
     private fun Response<ExchangeRateEntity>.parseResponseWithSuccessState(realCurrencyCode: String): Pair<String, Boolean> {//Pair<ParseResponse, isError>

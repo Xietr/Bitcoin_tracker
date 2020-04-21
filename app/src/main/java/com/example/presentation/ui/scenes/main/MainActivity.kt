@@ -4,18 +4,15 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
-import androidx.core.os.ConfigurationCompat
 import com.example.presentation.App
 import com.example.presentation.R
 import com.example.presentation.ui.animations.RefreshButtonAnimation
 import com.mynameismidori.currencypicker.CurrencyPicker
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_exchange_rate.*
 import kotlinx.android.synthetic.main.item_exchange_rate.view.*
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -75,14 +72,14 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainView {
     override fun setIsProgressBarVisible(isVisible: Boolean) {
         progressBar.visibility =
             if (isVisible) View.VISIBLE
-            else View.GONE
+            else View.INVISIBLE
     }
 
     override fun onLoadFinished() {
         shouldEndAnimation = true
     }
 
-    override fun inflateAndFillViewStub(countryName: String, flagDrawableResID: Int) {
+    override fun inflateAndFillViewStub(countryName: String, flagDrawableResID: Int, date: String) {
         if (!::inflatedExchangerateView.isInitialized) {
             inflatedExchangerateView = exchangeRateViewStub.inflate()
 
@@ -103,21 +100,12 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainView {
         inflatedExchangerateView.apply {
             countryNameTextView.text = countryName
             flagImageView.setImageResource(flagDrawableResID)
-            setNewDate()
+            lastCurrencyUpdateDateTextView.text = date
         }
     }
 
-    override fun updateDate() {
-        setNewDate()
-    }
-
-    private fun setNewDate() {
-        val dateFormat = SimpleDateFormat(
-            "yyyy/MM/dd HH:mm:ss",
-            ConfigurationCompat.getLocales(resources.configuration)[0]//get current Locale
-        )
-        val date = Date()
-        lastCurrencyUpdateDateTextView.text = dateFormat.format(date)
+    override fun updateDate(date: String) {
+        inflatedExchangerateView.lastCurrencyUpdateDateTextView.text = date
     }
 
 

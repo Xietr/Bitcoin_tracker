@@ -16,7 +16,11 @@ interface MainView : MvpView {
 
     fun onLoadFinished()
 
-    fun inflateAndFillViewStub(countryName: String, @DrawableRes flagDrawableResID: Int)
+    fun inflateAndFillViewStub(
+        countryName: String,
+        @DrawableRes flagDrawableResID: Int,
+        date: String
+    )
 
-    fun updateDate()
+    fun updateDate(date: String)
 }

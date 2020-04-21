@@ -4,11 +4,7 @@ ext {
     minSdkVersion = 17
     targetSdkVersion = 29
     BASE_URL = '"https://rest.coinapi.io/v1/"'
-    //todo remove
-//    API_KEY = '"5902CB3C-25E5-4A71-BDC0-73085FC86DD9"'
-//    API_KEY = '"C28136CC-BC70-4FAE-82F6-9F84AB36F263"'
-//    API_KEY = '"2CC24D92-CF32-45B8-BCBB-993A7031148E"'
-    API_KEY = '"766589A5-C35C-439E-933C-59604369F09A"'
+    API_KEY = '"C28136CC-BC70-4FAE-82F6-9F84AB36F263"'
 
     navigation = '2.1.0'
     retrofit = '2.8.1'
