@@ -10,4 +10,5 @@
 
     <string name="selected_currency">"Selected currency :"</string>
     <string name="last_time_updated">Last time updated :</string>
+    <string name="select_currency">Select currency for exchange</string>
 </resources>

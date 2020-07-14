@@ -1,7 +1,9 @@
-package com.example.presentation.di.network.retrofit
+package com.example.presentation.di.modules.network.retrofit
 
 import com.example.data.BuildConfig.BASE_URL
-import com.example.presentation.network.Interceptor
+import com.example.data.retrofit.converters.EnumConverterFactory
+import com.example.presentation.interceptors.ErrorParserInterceptor
+import com.example.presentation.interceptors.HeadersInterceptor
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -21,6 +23,7 @@ class RetrofitModule {
             .baseUrl(BASE_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(EnumConverterFactory())
             .client(client)
             .build()
     }
@@ -34,7 +37,8 @@ class RetrofitModule {
 
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
-            .addInterceptor(Interceptor())
+            .addInterceptor(HeadersInterceptor())
+            .addInterceptor(ErrorParserInterceptor())
             .build()
     }
 }

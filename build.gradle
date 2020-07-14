@@ -7,11 +7,11 @@ ext {
     API_KEY = '"C28136CC-BC70-4FAE-82F6-9F84AB36F263"'
 
     navigation = '2.1.0'
-    retrofit = '2.8.1'
-    dagger = '2.27'
+    retrofit = '2.9.0'
+    dagger = '2.28.1'
     rxKotlin = '2.4.0'
     rxAndroid = '2.1.1'
-    moxy = '2.0.2'
+    moxy = '2.1.2'
     picasso = '2.71828'
     room = '2.2.5'
 }

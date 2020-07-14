@@ -8,13 +8,13 @@ import moxy.viewstate.strategy.StateStrategyType
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface MainView : MvpView {
 
-    fun setExchangeRates(exchangeRates: ArrayList<String>)
+    fun setExchangeRates(exchangeRates: List<String>)
 
     fun showError(message: String)
 
     fun setIsProgressBarVisible(isVisible: Boolean)
 
-    fun onLoadFinished()
+    fun onLoadingFinished()
 
     fun inflateAndFillViewStub(
         countryName: String,

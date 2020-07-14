@@ -9,6 +9,9 @@ dependencies {
 
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
+
+    //Gson
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
 
 sourceCompatibility = "7"

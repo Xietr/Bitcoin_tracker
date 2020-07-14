@@ -11,18 +11,17 @@ import com.mynameismidori.currencypicker.CurrencyPicker
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_exchange_rate.view.*
 import moxy.MvpAppCompatActivity
-import moxy.presenter.InjectPresenter
-import moxy.presenter.ProvidePresenter
-import java.util.*
+import moxy.ktx.moxyPresenter
+import javax.inject.Inject
+import javax.inject.Provider
 
 
 class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainView {
 
-    @InjectPresenter
-    lateinit var presenter: MainPresenter
+    @Inject
+    lateinit var presenterProvider: Provider<MainPresenter>
 
-    @ProvidePresenter
-    fun providePresenter() = App.appComponent.provideMainPresenter()
+    private val presenter by moxyPresenter { presenterProvider.get() }
 
     private lateinit var inflatedExchangerateView: View
     private val animation: RotateAnimation by lazy { RefreshButtonAnimation() }
@@ -30,6 +29,8 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainView {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as App).appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
 
         setListeners()
@@ -38,7 +39,7 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainView {
     private fun setListeners() {
         currencyPicker.setOnClickListener {
             val picker =
-                CurrencyPicker.newInstance("Select currency for exchange")
+                CurrencyPicker.newInstance(getString(R.string.select_currency))
 
             with(picker) {
                 show(supportFragmentManager, CURRENCY_PICKER_TAG)
@@ -50,7 +51,7 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainView {
         }
     }
 
-    override fun setExchangeRates(exchangeRates: ArrayList<String>) {
+    override fun setExchangeRates(exchangeRates: List<String>) {
         errorTextView.visibility = View.GONE
         bitcoinCurrencyTextView.text = exchangeRates[0]
         ethereumCurrencyTextView.text = exchangeRates[1]
@@ -62,11 +63,12 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainView {
             visibility = View.VISIBLE
             text = message
         }
-        "".apply {
-            bitcoinCurrencyTextView.text = this
-            ethereumCurrencyTextView.text = this
-            litecoinCurrencyTextView.text = this
-        }
+
+        val stringOnError = ""
+
+        bitcoinCurrencyTextView.text = stringOnError
+        ethereumCurrencyTextView.text = stringOnError
+        litecoinCurrencyTextView.text = stringOnError
     }
 
     override fun setIsProgressBarVisible(isVisible: Boolean) {
@@ -75,7 +77,7 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main), MainView {
             else View.INVISIBLE
     }
 
-    override fun onLoadFinished() {
+    override fun onLoadingFinished() {
         shouldEndAnimation = true
     }
 

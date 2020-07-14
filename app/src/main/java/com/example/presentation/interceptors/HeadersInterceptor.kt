@@ -1,11 +1,11 @@
-package com.example.presentation.network
+package com.example.presentation.interceptors
 
 import com.example.data.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
 
-class Interceptor : Interceptor {
+class HeadersInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val original: Request = chain.request()

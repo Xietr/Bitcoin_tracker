@@ -1,7 +1,7 @@
-package com.example.presentation.di.network
+package com.example.presentation.di.modules.network
 
 import com.example.data.retrofit.CoinApi
-import com.example.presentation.di.network.retrofit.RetrofitModule
+import com.example.presentation.di.modules.network.retrofit.RetrofitModule
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

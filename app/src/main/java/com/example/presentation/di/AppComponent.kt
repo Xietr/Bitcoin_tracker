@@ -1,13 +1,13 @@
 package com.example.presentation.di
 
-import com.example.presentation.di.gateway.GatewayModule
-import com.example.presentation.ui.scenes.main.MainPresenter
+import com.example.presentation.di.modules.interactors.UseCaseModule
+import com.example.presentation.ui.scenes.main.MainActivity
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [GatewayModule::class])
+@Component(modules = [UseCaseModule::class])
 interface AppComponent {
 
-    fun provideMainPresenter(): MainPresenter
+    fun inject(mainActivity: MainActivity)
 }

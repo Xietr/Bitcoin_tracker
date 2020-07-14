@@ -6,13 +6,11 @@ import com.example.presentation.di.DaggerAppComponent
 
 class App : Application() {
 
-    override fun onCreate() {
-        super.onCreate()
-
-        appComponent = DaggerAppComponent.create()
+    val appComponent: AppComponent by lazy {
+        initializeComponent()
     }
 
-    companion object {
-        lateinit var appComponent: AppComponent
+    private fun initializeComponent(): AppComponent {
+        return DaggerAppComponent.create()
     }
 }
